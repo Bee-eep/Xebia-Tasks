@@ -1,0 +1,275 @@
+
+<style>
+  .root { padding: 1.5rem 0; font-family: var(--font-sans); }
+  .header { margin-bottom: 1.5rem; }
+  .badge { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: var(--border-radius-md); background: var(--color-background-info); color: var(--color-text-info); margin-bottom: 8px; }
+  .title { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+  .subtitle { font-size: 14px; color: var(--color-text-secondary); margin: 0 0 10px; }
+  .rules-section { margin-bottom: 1rem; }
+  .rules-group-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: 0.04em; margin-bottom: 6px; }
+  .rules-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .rule-chip { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); background: var(--color-background-secondary); }
+  .rule-chip i { font-size: 13px; }
+  .rule-chip.allowed { background: #EAF3DE; color: #3B6D11; border-color: #C0DD97; }
+  .rule-chip.blocked { background: #FCEBEB; color: #A32D2D; border-color: #F7C1C1; }
+  .section { margin-bottom: 1.5rem; }
+  .section-header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--border-radius-md); margin-bottom: 10px; }
+  .section-icon { font-size: 18px; }
+  .section-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+  .section-meta { font-size: 12px; margin-left: auto; padding: 2px 10px; border-radius: var(--border-radius-md); font-weight: 500; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .q-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: 0.04em; margin-bottom: 6px; }
+  .q-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 8px; }
+  .q-body { font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.65; margin: 0 0 10px; }
+  .q-body ol { margin: 6px 0 6px 16px; padding: 0; }
+  .q-body li { margin-bottom: 3px; }
+  code { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-tertiary); padding: 1px 5px; border-radius: 4px; color: var(--color-text-primary); }
+  .code-block { background: var(--color-background-tertiary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 12px; font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-primary); margin: 8px 0; white-space: pre; overflow-x: auto; line-height: 1.6; }
+  .q-footer { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 2px 9px; border-radius: var(--border-radius-md); font-weight: 500; }
+  .tag-diff-easy { background: #EAF3DE; color: #3B6D11; }
+  .tag-diff-medium { background: #FAEEDA; color: #854F0B; }
+  .tag-neutral { background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.5rem 0; }
+  .note { font-size: 12px; color: var(--color-text-tertiary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 8px 12px; margin-top: 6px; border-left: 2px solid var(--color-border-secondary); }
+  .arrays-header { background: #EEEDFE; }
+  .arrays-icon-color { color: #534AB7; }
+  .arrays-meta { background: #EEEDFE; color: #3C3489; }
+  .strings-header { background: #E1F5EE; }
+  .strings-icon-color { color: #0F6E56; }
+  .strings-meta { background: #E1F5EE; color: #085041; }
+  .sql-header { background: #E6F1FB; }
+  .sql-icon-color { color: #185FA5; }
+  .sql-meta { background: #E6F1FB; color: #0C447C; }
+  .api-header { background: #FAEEDA; }
+  .api-icon-color { color: #854F0B; }
+  .api-meta { background: #FAEEDA; color: #633806; }
+</style>
+
+<div class="root">
+  <div class="header">
+    <div class="badge">Virtual Internship · Day 3</div>
+    <h1 class="title">Technical Assessment — Round 1</h1>
+    <p class="subtitle">Programming Assessment &nbsp;·&nbsp; 60 minutes</p>
+
+    <div class="rules-section">
+      <div class="rules-group-label">ALLOWED</div>
+      <div class="rules-bar">
+        <span class="rule-chip allowed"><i class="ti ti-code" aria-hidden="true"></i> Any programming language</span>
+        <span class="rule-chip allowed"><i class="ti ti-check" aria-hidden="true"></i> Code completion (e.g. Copilot, IntelliSense)</span>
+        <span class="rule-chip allowed"><i class="ti ti-world" aria-hidden="true"></i> Online resources (Stack Overflow, docs, MDN, etc.)</span>
+      </div>
+      <div class="rules-group-label">NOT ALLOWED</div>
+      <div class="rules-bar">
+        <span class="rule-chip blocked"><i class="ti ti-x" aria-hidden="true"></i> AI code generation (ChatGPT, Claude, Gemini, etc.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARRAYS -->
+  <div class="section">
+    <div class="section-header arrays-header">
+      <i class="ti ti-layout-list section-icon arrays-icon-color" aria-hidden="true"></i>
+      <p class="section-title">Arrays</p>
+      <span class="section-meta arrays-meta">2 problems</span>
+    </div>
+    <div class="card">
+      <div class="q-label">Q1 · Arrays</div>
+      <div class="q-title">Second Largest Without Duplicates</div>
+      <div class="q-body">Given an integer array, find and return the second largest unique element. If no such element exists, return <code>-1</code>.</div>
+      <div class="code-block">Input:  [12, 35, 1, 10, 34, 1]
+Output: 34
+
+Input:  [10, 10, 10]
+Output: -1</div>
+      <div class="note">Constraint: Do not use sorting. O(n) solution expected.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-easy">Easy</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~10 min</span>
+        <span class="tag tag-neutral">Linear traversal</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q-label">Q2 · Arrays</div>
+      <div class="q-title">Rotate Array K Steps to the Right</div>
+      <div class="q-body">Given an array of integers and a number <code>k</code>, rotate the array to the right by <code>k</code> positions in-place.</div>
+      <div class="code-block">Input:  [1, 2, 3, 4, 5, 6, 7],  k = 3
+Output: [5, 6, 7, 1, 2, 3, 4]
+
+Input:  [-1, -100, 3, 99],  k = 2
+Output: [3, 99, -1, -100]</div>
+      <div class="note">Handle edge case: k may be larger than array length.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-medium">Medium</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+        <span class="tag tag-neutral">In-place, modulo</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STRINGS -->
+  <div class="section">
+    <div class="section-header strings-header">
+      <i class="ti ti-typography section-icon strings-icon-color" aria-hidden="true"></i>
+      <p class="section-title">Strings</p>
+      <span class="section-meta strings-meta">2 problems</span>
+    </div>
+    <div class="card">
+      <div class="q-label">Q3 · Strings</div>
+      <div class="q-title">Valid Anagram Check</div>
+      <div class="q-body">Write a function that takes two strings and returns <code>true</code> if one is an anagram of the other, <code>false</code> otherwise. Comparison should be case-insensitive and ignore spaces.</div>
+      <div class="code-block">Input:  "Listen", "Silent"
+Output: true
+
+Input:  "hello world", "world hello"
+Output: true
+
+Input:  "rat", "car"
+Output: false</div>
+      <div class="note">Do not use any built-in sort function. Use a frequency map.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-easy">Easy</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~8 min</span>
+        <span class="tag tag-neutral">Hash map</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q-label">Q4 · Strings</div>
+      <div class="q-title">Longest Substring Without Repeating Characters</div>
+      <div class="q-body">Given a string, find the length of the longest substring that contains no repeating characters.</div>
+      <div class="code-block">Input:  "abcabcbb"
+Output: 3   (substring: "abc")
+
+Input:  "bbbbb"
+Output: 1   (substring: "b")
+
+Input:  "pwwkew"
+Output: 3   (substring: "wke")</div>
+      <div class="note">Sliding window approach expected. Brute force will receive partial credit.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-medium">Medium</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+        <span class="tag tag-neutral">Sliding window</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SQL -->
+  <div class="section">
+    <div class="section-header sql-header">
+      <i class="ti ti-database section-icon sql-icon-color" aria-hidden="true"></i>
+      <p class="section-title">SQL</p>
+      <span class="section-meta sql-meta">2 problems</span>
+    </div>
+    <div class="card">
+      <div class="q-label">Q5 · SQL</div>
+      <div class="q-title">Top Earning Employees per Department</div>
+      <div class="q-body">Given the tables below, write a query to find the name and salary of the highest-paid employee in each department. Include department name in the result.</div>
+      <div class="code-block">Employees(emp_id, name, salary, dept_id)
+Departments(dept_id, dept_name)
+
+Expected output columns: dept_name, name, salary</div>
+      <div class="note">Handle the case where two employees share the top salary in the same department — both should appear.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-medium">Medium</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~10 min</span>
+        <span class="tag tag-neutral">JOIN, GROUP BY</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q-label">Q6 · SQL</div>
+      <div class="q-title">Monthly Order Revenue Report</div>
+      <div class="q-body">Using the <code>Orders</code> table, write a query to find the total revenue and number of orders placed each month in the year 2024, ordered from highest revenue to lowest.</div>
+      <div class="code-block">Orders(order_id, customer_id, order_date, amount)
+
+Expected output columns:
+  month, total_revenue, total_orders</div>
+      <div class="note">Use DATE functions to extract the month. Format the month as a readable name (Jan, Feb…) if your SQL dialect supports it.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-easy">Easy–Medium</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~8 min</span>
+        <span class="tag tag-neutral">Aggregate, date functions</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- API Integration -->
+  <div class="section">
+    <div class="section-header api-header">
+      <i class="ti ti-api section-icon api-icon-color" aria-hidden="true"></i>
+      <p class="section-title">API Integration</p>
+      <span class="section-meta api-meta">2 problems</span>
+    </div>
+    <div class="card">
+      <div class="q-label">Q7 · API Integration</div>
+      <div class="q-title">Fetch and Display User Posts</div>
+      <div class="q-body">Using the public REST API at <code>https://jsonplaceholder.typicode.com</code>, write a script that:
+        <ol>
+          <li>Fetches all posts for the user with <code>userId = 3</code></li>
+          <li>Prints the title of each post in uppercase</li>
+          <li>Prints the total count of posts fetched at the end</li>
+        </ol>
+      </div>
+      <div class="code-block">Endpoint: GET /posts?userId=3
+
+Expected output:
+  TITLE OF POST ONE
+  TITLE OF POST TWO
+  ...
+  Total posts: N</div>
+      <div class="note">Handle HTTP errors gracefully — print a useful error message if the request fails.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-easy">Easy</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~10 min</span>
+        <span class="tag tag-neutral">GET, JSON parsing</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q-label">Q8 · API Integration</div>
+      <div class="q-title">Weather Summary with Conditional Logic</div>
+      <div class="q-body">Using the Open-Meteo API (free, no API key required), fetch the current temperature and weather code for any city of your choice. Based on the weather code returned, print a human-readable weather condition.</div>
+      <div class="code-block">Base URL:
+  https://api.open-meteo.com/v1/forecast
+
+Required query parameters:
+  latitude        = {your chosen city's latitude}
+  longitude       = {your chosen city's longitude}
+  current_weather = true
+
+Sample response (current_weather object):
+  {
+    "temperature": 18.2,
+    "windspeed": 12.4,
+    "weathercode": 3
+  }
+
+Weather code reference (handle at least 5):
+  0  → Clear sky
+  1  → Mainly clear
+  2  → Partly cloudy
+  3  → Overcast
+  45 → Fog
+  61 → Light rain
+  80 → Rain showers
+  95 → Thunderstorm
+
+Expected console output:
+  City       : London
+  Temperature: 18.2°C
+  Condition  : Overcast</div>
+      <div class="note">A hardcoded mapping table or dictionary for weather codes is perfectly acceptable.</div>
+      <div class="q-footer">
+        <span class="tag tag-diff-medium">Medium</span>
+        <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+        <span class="tag tag-neutral">GET, query params, conditionals</span>
+      </div>
+    </div>
+  </div>
+
+</div>

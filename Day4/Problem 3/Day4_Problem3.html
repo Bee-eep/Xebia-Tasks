@@ -1,0 +1,275 @@
+
+<style>
+  .root{padding:1.5rem 0;font-family:var(--font-sans)}
+  .badge{display:inline-block;font-size:12px;padding:3px 10px;border-radius:var(--border-radius-md);background:var(--color-background-info);color:var(--color-text-info);margin-bottom:8px}
+  .title{font-size:22px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px}
+  .subtitle{font-size:14px;color:var(--color-text-secondary);margin:0 0 10px}
+  .rules-group-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.04em;margin-bottom:6px}
+  .rules-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .rule-chip{display:flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);background:var(--color-background-secondary)}
+  .rule-chip.allowed{background:#EAF3DE;color:#3B6D11;border-color:#C0DD97}
+  .rule-chip.blocked{background:#FCEBEB;color:#A32D2D;border-color:#F7C1C1}
+  .scenario-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:1.25rem 0}
+  .scenario-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin:0 0 6px;letter-spacing:.03em}
+  .scenario-body{font-size:13.5px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+  .modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0 1.5rem}
+  .module-chip{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);font-size:12.5px;color:var(--color-text-secondary);background:var(--color-background-primary)}
+  .module-chip i{font-size:15px}
+  .divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.5rem 0}
+  .section-header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--border-radius-md);margin-bottom:10px}
+  .section-title{font-size:15px;font-weight:500;margin:0}
+  .section-meta{font-size:12px;margin-left:auto;padding:2px 10px;border-radius:var(--border-radius-md);font-weight:500}
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:12px}
+  .q-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.04em;margin-bottom:5px}
+  .q-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin:0 0 8px}
+  .q-body{font-size:13.5px;color:var(--color-text-secondary);line-height:1.65;margin:0 0 8px}
+  .code-block{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 14px;font-family:var(--font-mono);font-size:12.5px;color:var(--color-text-primary);margin:8px 0;white-space:pre;overflow-x:auto;line-height:1.7}
+  .bug-line{background:#FAEEDA;color:#633806;border-radius:3px}
+  .symptom-box{background:#FCEBEB;border-left:2px solid #E24B4A;border-radius:0;padding:8px 12px;margin:8px 0;font-size:13px;color:#791F1F}
+  .task-box{background:#EAF3DE;border-left:2px solid #639922;border-radius:0;padding:8px 12px;margin:8px 0;font-size:13px;color:#27500A}
+  .task-box ol{margin:4px 0 0 16px;padding:0}
+  .task-box li{margin-bottom:3px}
+  .q-footer{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .tag{font-size:11px;padding:2px 9px;border-radius:var(--border-radius-md);font-weight:500}
+  .tag-logic{background:#EEEDFE;color:#3C3489}
+  .tag-runtime{background:#FAEEDA;color:#633806}
+  .tag-sql{background:#E6F1FB;color:#0C447C}
+  .tag-api{background:#E1F5EE;color:#085041}
+  .tag-boundary{background:#FBEAF0;color:#72243E}
+  .tag-neutral{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+  .note{font-size:12px;color:var(--color-text-tertiary);background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 12px;margin-top:6px;border-left:2px solid var(--color-border-secondary)}
+  code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-tertiary);padding:1px 5px;border-radius:4px;color:var(--color-text-primary)}
+  .bug-count-badge{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);background:#FCEBEB;color:#A32D2D;font-weight:500;margin-left:6px}
+</style>
+
+<div class="root">
+  <div class="badge">Virtual Internship · Day 3</div>
+  <h1 class="title">Technical Assessment — Round 3</h1>
+  <p class="subtitle">Debugging Challenge &nbsp;·&nbsp; 60 minutes</p>
+
+  <div class="rules-group-label">ALLOWED</div>
+  <div class="rules-bar">
+    <span class="rule-chip allowed"><i class="ti ti-code" aria-hidden="true"></i> Any programming language</span>
+    <span class="rule-chip allowed"><i class="ti ti-check" aria-hidden="true"></i> Code completion (e.g. Copilot, IntelliSense)</span>
+    <span class="rule-chip allowed"><i class="ti ti-world" aria-hidden="true"></i> Online resources (Stack Overflow, docs, MDN, etc.)</span>
+  </div>
+  <div class="rules-group-label">NOT ALLOWED</div>
+  <div class="rules-bar">
+    <span class="rule-chip blocked"><i class="ti ti-x" aria-hidden="true"></i> AI code generation (ChatGPT, Claude, Gemini, etc.)</span>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-title">APP SCENARIO</div>
+    <div class="scenario-body">You have been handed the codebase of an <strong style="font-weight:500">Employee Attendance Tracker</strong> — a Python application used by an HR team to manage employee records, track attendance, calculate working hours, and generate monthly reports. The application fetches employee data from a REST API, stores attendance records in a SQL database, and processes daily check-in/check-out times. A junior developer wrote the initial version but introduced several bugs. Your job is to find and fix them all.</div>
+  </div>
+
+  <div class="rules-group-label" style="margin-bottom:8px">APPLICATION MODULES</div>
+  <div class="modules">
+    <div class="module-chip"><i class="ti ti-api" aria-hidden="true"></i> api_client.py</div>
+    <div class="module-chip"><i class="ti ti-database" aria-hidden="true"></i> db_queries.py</div>
+    <div class="module-chip"><i class="ti ti-clock" aria-hidden="true"></i> attendance.py</div>
+    <div class="module-chip"><i class="ti ti-chart-bar" aria-hidden="true"></i> report.py</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- BUG 1 -->
+  <div class="card">
+    <div class="q-label">BUG 01 · api_client.py <span class="bug-count-badge">2 bugs</span></div>
+    <div class="q-title">Fetching Employee Records from the HR API</div>
+    <div class="q-body">The function below is responsible for fetching an employee's details from the internal HR API. It is returning errors and occasionally crashing.</div>
+    <div class="code-block">import requests
+
+API_BASE_URL = "https://hr-internal.company.com/api"
+
+def get_employee(employee_id):
+    url = f"{API_BASE_URL}/employees/{employee_id}"
+    
+    response = requests.get(url)           <span class="bug-line"> ← Bug A</span>
+    
+    data = response.json()
+    return data["employee"]                <span class="bug-line"> ← Bug B</span></div>
+    <div class="symptom-box">
+      <strong style="font-weight:500">Symptoms</strong><br>
+      A — Requests to the API are being rejected with a 401 Unauthorized error. The API requires an <code>Authorization</code> header with a bearer token stored in a constant <code>API_TOKEN</code>.<br><br>
+      B — When the API returns a 404 (employee not found), the function crashes with a <code>KeyError</code> instead of returning <code>None</code> gracefully.
+    </div>
+    <div class="task-box">
+      <strong style="font-weight:500">Your tasks</strong>
+      <ol>
+        <li>Add the missing <code>Authorization</code> header to the request.</li>
+        <li>Handle the case where the employee is not found — return <code>None</code> instead of crashing.</li>
+      </ol>
+    </div>
+    <div class="q-footer">
+      <span class="tag tag-api">API bug</span>
+      <span class="tag tag-runtime">Runtime error</span>
+      <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~10 min</span>
+    </div>
+  </div>
+
+  <!-- BUG 2 -->
+  <div class="card">
+    <div class="q-label">BUG 02 · db_queries.py <span class="bug-count-badge">2 bugs</span></div>
+    <div class="q-title">Querying Attendance Records from the Database</div>
+    <div class="q-body">The function below queries attendance records for a specific employee in a given month. It is returning incorrect data and in some cases returning records for all employees.</div>
+    <div class="code-block">def get_monthly_attendance(conn, employee_id, month, year):
+    query = """
+        SELECT a.date, a.check_in, a.check_out, e.name
+        FROM attendance a
+        LEFT JOIN employees e                  <span class="bug-line"> ← Bug A</span>
+        ON a.employee_id = e.id
+        WHERE a.month = ?                      <span class="bug-line"> ← Bug B</span>
+        AND a.year = ?
+        ORDER BY a.date ASC
+    """
+    cursor = conn.cursor()
+    cursor.execute(query, (month, year))
+    return cursor.fetchall()</div>
+    <div class="symptom-box">
+      <strong style="font-weight:500">Symptoms</strong><br>
+      A — Records are returned even when there is no matching employee in the <code>employees</code> table. Only attendance records with a valid, existing employee should be returned.<br><br>
+      B — The query is returning attendance records for all employees in that month, not just the specified one. The <code>employee_id</code> filter is never applied.
+    </div>
+    <div class="task-box">
+      <strong style="font-weight:500">Your tasks</strong>
+      <ol>
+        <li>Change the JOIN type so only records with a matching employee are returned.</li>
+        <li>Add the missing <code>employee_id</code> filter to the WHERE clause and pass it correctly to the query.</li>
+      </ol>
+    </div>
+    <div class="q-footer">
+      <span class="tag tag-sql">SQL bug</span>
+      <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~10 min</span>
+    </div>
+  </div>
+
+  <!-- BUG 3 -->
+  <div class="card">
+    <div class="q-label">BUG 03 · attendance.py <span class="bug-count-badge">2 bugs</span></div>
+    <div class="q-title">Calculating Working Hours for the Day</div>
+    <div class="q-body">This function calculates the number of hours an employee worked in a day and flags them as late if they checked in after 9:00 AM. Both calculations are producing wrong results.</div>
+    <div class="code-block">from datetime import datetime
+
+WORK_START = "09:00"
+LATE_THRESHOLD_MINUTES = 15
+
+def calculate_hours(check_in: str, check_out: str):
+    fmt = "%H:%M"
+    ci = datetime.strptime(check_in, fmt)
+    co = datetime.strptime(check_out, fmt)
+
+    duration = ci - co                                   <span class="bug-line"> ← Bug A</span>
+    hours_worked = duration.seconds / 3600
+
+    start = datetime.strptime(WORK_START, fmt)
+    late_by = (ci - start).seconds // 60
+
+    is_late = late_by > LATE_THRESHOLD_MINUTES           <span class="bug-line"> ← Bug B</span>
+
+    return round(hours_worked, 2), is_late</div>
+    <div class="symptom-box">
+      <strong style="font-weight:500">Symptoms</strong><br>
+      A — <code>hours_worked</code> is always negative or producing a very large incorrect number. The subtraction operands are in the wrong order.<br><br>
+      B — An employee who checks in exactly 15 minutes late is not being flagged, but they should be. The boundary condition is off by one.
+    </div>
+    <div class="task-box">
+      <strong style="font-weight:500">Your tasks</strong>
+      <ol>
+        <li>Fix the subtraction so <code>duration</code> represents time from check-in to check-out.</li>
+        <li>Correct the comparison operator so an employee who is exactly 15 minutes late is also flagged.</li>
+      </ol>
+    </div>
+    <div class="q-footer">
+      <span class="tag tag-logic">Logic bug</span>
+      <span class="tag tag-boundary">Off-by-one</span>
+      <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+    </div>
+  </div>
+
+  <!-- BUG 4 -->
+  <div class="card">
+    <div class="q-label">BUG 04 · report.py <span class="bug-count-badge">2 bugs</span></div>
+    <div class="q-title">Generating the Monthly Attendance Summary</div>
+    <div class="q-body">This function takes a list of daily attendance records and produces a summary. It is crashing on some inputs and calculating the average hours incorrectly.</div>
+    <div class="code-block">def generate_summary(records):
+    total_hours = 0
+    late_days = 0
+
+    for i in range(len(records) + 1):      <span class="bug-line"> ← Bug A</span>
+        record = records[i]
+        total_hours += record["hours"]
+        if record["is_late"]:
+            late_days += 1
+
+    avg_hours = total_hours / len(records)  <span class="bug-line"> ← Bug B</span>
+
+    return {
+        "total_hours": round(total_hours, 2),
+        "avg_hours": round(avg_hours, 2),
+        "late_days": late_days,
+        "days_present": len(records)
+    }</div>
+    <div class="symptom-box">
+      <strong style="font-weight:500">Symptoms</strong><br>
+      A — The function raises an <code>IndexError</code> on every call. The loop iterates one step too far beyond the list length.<br><br>
+      B — When an employee has zero attendance records, the function crashes with a <code>ZeroDivisionError</code> instead of returning <code>0</code> for average hours.
+    </div>
+    <div class="task-box">
+      <strong style="font-weight:500">Your tasks</strong>
+      <ol>
+        <li>Fix the loop range so it does not go out of bounds.</li>
+        <li>Handle the empty records case — return <code>avg_hours: 0</code> instead of dividing by zero.</li>
+      </ol>
+    </div>
+    <div class="q-footer">
+      <span class="tag tag-boundary">Off-by-one</span>
+      <span class="tag tag-runtime">Runtime error</span>
+      <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+    </div>
+  </div>
+
+  <!-- BUG 5 -->
+  <div class="card">
+    <div class="q-label">BUG 05 · report.py <span class="bug-count-badge">2 bugs</span></div>
+    <div class="q-title">Flagging Employees Below Minimum Attendance</div>
+    <div class="q-body">HR policy requires that employees must be present for at least 20 days per month and must not exceed 3 late check-ins before a warning is issued. Both conditions in this function have logic errors.</div>
+    <div class="code-block">MIN_DAYS_REQUIRED = 20
+MAX_LATE_DAYS = 3
+
+def check_attendance_policy(summary):
+    days_present = summary["days_present"]
+    late_days = summary["late_days"]
+
+    below_minimum = days_present > MIN_DAYS_REQUIRED    <span class="bug-line"> ← Bug A</span>
+    exceeded_late = late_days > MAX_LATE_DAYS            <span class="bug-line"> ← Bug B</span>
+
+    if below_minimum or exceeded_late:
+        return {
+            "warning": True,
+            "reason": []
+              + (["Below minimum attendance"] if below_minimum else [])
+              + (["Exceeded late check-ins"] if exceeded_late else [])
+        }
+    return {"warning": False, "reason": []}</div>
+    <div class="symptom-box">
+      <strong style="font-weight:500">Symptoms</strong><br>
+      A — Employees who attend fewer than 20 days are <em>not</em> being flagged. Employees who attend more than 20 days are being flagged instead. The comparison is inverted.<br><br>
+      B — An employee with exactly 3 late check-ins is not receiving a warning, but HR policy states that 3 or more late check-ins should trigger one.
+    </div>
+    <div class="task-box">
+      <strong style="font-weight:500">Your tasks</strong>
+      <ol>
+        <li>Fix the <code>below_minimum</code> condition so it correctly flags employees who attended fewer than the minimum required days.</li>
+        <li>Fix the <code>exceeded_late</code> condition so employees with exactly <code>MAX_LATE_DAYS</code> late check-ins are also flagged.</li>
+      </ol>
+    </div>
+    <div class="q-footer">
+      <span class="tag tag-logic">Logic bug</span>
+      <span class="tag tag-boundary">Off-by-one</span>
+      <span class="tag tag-neutral"><i class="ti ti-clock" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ~12 min</span>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:0.5rem">Each bug carries equal marks. Partial credit is awarded if you correctly identify the bug but the fix is incomplete. Always explain your fix in a comment above the corrected line.</div>
+</div>
