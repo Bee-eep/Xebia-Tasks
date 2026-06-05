@@ -1,7 +1,0 @@
-title,description,estimated_carbon_reduction_kg,estimated_cost_savings_usd,effort,impact_level,roi_score
-Rightsize EC2 instances,Identify and downsize over-provisioned non-prod EC2 instances,380.09572177042986,2144.9817613259033,Medium,High,760.1914435408597
-Migrate to lower-carbon regions,Move workloads from us-east-1 to eu-west-1,523.806909214046,3081.8498602523796,High,High,523.806909214046
-Focus optimization on ProjectA,Project has lowest Green Score (F),224.92336560522574,2290.6433310103353,Medium,High,449.8467312104515
-Consolidate RDS instances,Merge low-traffic databases using read replicas,229.42687670029468,1287.0283235086736,High,Medium,229.42687670029468
-Implement S3 lifecycle policies,Archive unused objects and remove old backups,12.73373860456897,1646.3054354875387,Low,Medium,38.20121581370691
-Optimize data transfer patterns,Use CloudFront CDN and regional endpoints,5.227799449678006,2885.3917809650998,Medium,Medium,10.455598899356012
